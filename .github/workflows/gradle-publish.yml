@@ -26,7 +26,13 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
 
+    - name: Set up Gradle publishing credentials
+      env:
+          GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}  # GitHub username
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub token
+      run: |
+          echo "gpr.user=${GITHUB_ACTOR}" >> ~/.gradle/gradle.properties
+          echo "gpr.token=${GITHUB_TOKEN}" >> ~/.gradle/gradle.properties
+
     - name: Publish to GitHub Packages
       run: ./gradlew publish --no-daemon
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
