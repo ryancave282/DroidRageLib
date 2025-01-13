@@ -18,7 +18,7 @@ jobs:
       uses: actions/setup-java@v2
       with:
         java-version: '17'  # Set your required Java version
-        distribution: 'adoptopenjdk'
+        distribution: 'openjdk'
 
     - name: Build with Gradle
       run: ./gradlew build
