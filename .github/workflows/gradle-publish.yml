@@ -3,9 +3,8 @@ name: Publish to GitHub Packages
 on:
   push:
     branches:
-      - main  # or the branch you want to trigger this action on
-    paths:
-      - 'build.gradle'  # Only trigger if this file changes (you can add other paths too)
+      - master  # or the branch you want to trigger this action on
+  workflow_dispatch:  # Only trigger if this file changes (you can add other paths too)
 
 jobs:
   build:
