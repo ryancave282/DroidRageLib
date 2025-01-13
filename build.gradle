@@ -11,7 +11,7 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/ryancave282/droidragelib")
             credentials {
-                username = "droidrage"
+                username = "ryancave282"
                 password = project.findProperty("gpr.key") ?: System.getenv("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")
             }
         }
