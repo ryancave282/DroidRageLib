@@ -5,23 +5,27 @@ plugins {
 
 }
 
+
 group = 'net.droidrage'
-version = '0.0.1'
+version = '0.0.2'  // Make sure to increment version if you have published before
 
 publishing {
     publications {
-        // Correct way to define the publication
-        maven(MavenPublication) {
+        mavenJava(MavenPublication) {
             from components.java
-            artifactId = 'DroidRageLib'
+
+            pom {
+                name = 'DroidRageLib'
+                description = 'A useful library'
+                url = 'https://github.com/ryancave282/DroidRageLib'
+            }
         }
     }
-
     repositories {
         maven {
-            url = uri("https://maven.pkg.github.com/ryancave282/DroidRageLib/")
+            url = uri("https://maven.pkg.github.com/ryancave282/DroidRageLib") // Correct URL
             credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
+                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
                 password = project.findProperty("gpr.token") ?: System.getenv("GITHUB_TOKEN")
             }
         }
