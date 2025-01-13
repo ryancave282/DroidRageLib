@@ -3,7 +3,6 @@ package net.droidrage.lib;
 import com.ctre.phoenix6.CANBus;
 
 import edu.wpi.first.wpilibj2.command.InstantCommand;
-import net.droidrage.lib.shuffleboard.ShuffleboardValue;
 
 public final class DroidRageConstants {
     public enum Element{
