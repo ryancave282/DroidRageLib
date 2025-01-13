@@ -1,22 +1,25 @@
 package net.droidrage.lib;
 
+import com.ctre.phoenix6.CANBus;
+
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import net.droidrage.lib.shuffleboard.ShuffleboardValue;
 
 public final class DroidRageConstants {
     public enum Element{
-            ALGAE,
-            CORAL
+        ALGAE,
+        CORAL
     }
     public static Element element = Element.ALGAE;
     public static InstantCommand flipElement(){
         return new InstantCommand(
-            ()->{
+                ()->{
                     if (element == Element.ALGAE) element = Element.CORAL;
                     else if (element == Element.CORAL) element = Element.ALGAE;
-            }
+                }
         );
     }
+
 
     public static class Gamepad {
         public static final int DRIVER_CONTROLLER_PORT = 0;
@@ -32,20 +35,21 @@ public final class DroidRageConstants {
     }
 
     public static double applyDeadBand(double value) {
-        if (Math.abs(value) < Gamepad.OPERATOR_STICK_DEADZONE) value = 0;
+        if (Math.abs(value) < DroidRageConstants.Gamepad.OPERATOR_STICK_DEADZONE) value = 0;
         return value;
     }
 
     public static boolean isWithinDeadzone(double stick) {
-        return Math.abs(stick) < Gamepad.OPERATOR_STICK_DEADZONE;
+        return Math.abs(stick) < DroidRageConstants.Gamepad.OPERATOR_STICK_DEADZONE;
     }
 
-    public static String canName = "structure"; //Rev stuff does not work on CANivore
+    // public static String canName = "drive"; //Rev stuff does not work on CANivore
+    public static CANBus canBus = new CANBus("drive");
     // public static boolean removeWriter = true; //Can be used to turn off certain writers, hopefulyl preventing loop overruns
     public static ShuffleboardValue<Boolean> removeWriterWriter =
-        ShuffleboardValue.create(true, "RemoveWritersWriter", Robot.class.getSimpleName())
-        .withSize(1, 3)
-        .build();
+            ShuffleboardValue.create(true, "RemoveWritersWriter", Robot.class.getSimpleName())
+                    .withSize(1, 3)
+                    .build();
 
     public enum Control{
         PID,
