@@ -38,5 +38,5 @@ jobs:
     - name: Publish to GitHub Packages
       run: ./gradlew publish
       env:
-        USERNAME: "droidrage"
-        TOKEN: "3035"
+        USERNAME: "ryancave282"
+        TOKEN: "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"
