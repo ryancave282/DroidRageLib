@@ -1,6 +1,26 @@
 plugins {
     id 'java'
     id "edu.wpi.first.GradleRIO" version "2025.1.1"
+    id "maven-publish"
+
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/ryancave282/droidragelib")
+            credentials {
+                username = "droidrage"
+                password = project.findProperty("gpr.key") ?: System.getenv("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")
+            }
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+            from(components.java)
+        }
+    }
 }
 
 group = 'net.droidrage'
