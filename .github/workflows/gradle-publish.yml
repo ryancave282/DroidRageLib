@@ -39,4 +39,4 @@ jobs:
       run: ./gradlew publish
       env:
         USERNAME: "ryancave282"
-        TOKEN: "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"
+        TOKEN: "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"
