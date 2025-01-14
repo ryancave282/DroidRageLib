@@ -25,7 +25,7 @@ publishing {
         maven {
             url = uri(project.findProperty("maven.url")) // Correct URL
             credentials {
-                username = System.getenv("USERNAME")
+                username = 'ryancave282'
                 password = System.getenv("TOKEN")
             }
         }
