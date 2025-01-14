@@ -28,11 +28,8 @@ jobs:
 
     - name: Set up Gradle publishing credentials
       env:
-          USERNAME: ${{ secrets.USERNAME }}  # GitHub username
           TOKEN: ${{ secrets.TOKEN }}  # GitHub token
-      run: |
-          echo "gpr.user=${USERNAME}" >> ~/.gradle/gradle.properties
-          echo "gpr.token=${TOKEN}" >> ~/.gradle/gradle.properties
+      run: echo "gpr.token=${TOKEN}" >> ~/.gradle/gradle.properties
 
     - name: Publish to GitHub Packages
       run: ./gradlew publish --no-daemon
