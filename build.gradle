@@ -6,24 +6,24 @@ plugins {
 }
 
 
-group = "group.id"
-version = "lib.version"
+group = project.findProperty("group.id")
+version = project.findProperty("lib.version")
 
 publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
-            artifactId = "artifact.id"
+            artifactId = project.findProperty("artifact.id")
             pom {
-                name = "artifact.id"
+                name = project.findProperty("artifact.id")
                 description = 'General Library for FRC Team Droid Rage'
-                url = "git.url"
+                url = project.findProperty("git.url")
             }
         }
     }
     repositories {
         maven {
-            url = uri("maven.url") // Correct URL
+            url = uri(project.findProperty("maven.url")) // Correct URL
             credentials {
                 username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
                 password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
