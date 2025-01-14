@@ -11,25 +11,11 @@ version = project.findProperty("lib.version")
 
 publishing {
     publications {
-        mavenJava(MavenPublication) {
+        maven(MavenPublication) {
             from components.java
-            artifactId = project.findProperty("artifact.id")
-            pom {
-                name = project.findProperty("artifact.id")
-                description = 'General Library for FRC Team Droid Rage'
-                url = project.findProperty("git.url")
-            }
         }
     }
-    repositories {
-        maven {
-            url = uri(project.findProperty("maven.url")) // Correct URL
-            credentials {
-                username = 'ryancave282'
-                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
-            }
-        }
-    }
+
 }
 
 repositories {
