@@ -26,10 +26,6 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
 
-    - name: Set up Gradle publishing credentials
-      env:
-          TOKEN: ${{ secrets.TOKEN }}  # GitHub token
-
     - name: Publish to GitHub Packages
       env:
         TOKEN: ${{ secrets.TOKEN }}
