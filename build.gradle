@@ -5,6 +5,10 @@ plugins {
 
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
 
 group = project.findProperty("group.id")
 version = project.findProperty("lib.version")
