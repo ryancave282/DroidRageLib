@@ -1,5 +1,6 @@
 package net.droidrage.lib.encoder;
 
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import net.droidrage.lib.shuffleboard.ShuffleboardValue;
 
 public abstract class EncoderEx {
@@ -20,10 +21,10 @@ public abstract class EncoderEx {
     public ShuffleboardValue<Double> radianWriter;
     public ShuffleboardValue<Double> rawWriter;
     public ShuffleboardValue<Boolean> isConnectedWriter;
-    public String name;
-    protected String subSystemName;
+    public String subsystemName;
+    // protected String subSystemName;
     public int deviceID;
-    
+
 
     public class DirectionBuilder {
         public SubsystemNameBuilder withDirection(EncoderDirection direction) {
@@ -33,19 +34,24 @@ public abstract class EncoderEx {
     }
 
     public class SubsystemNameBuilder {
+
+        public <T extends EncoderEx> T withSubsystemBase(String encoderName, SubsystemBase subsystemBase) {
+            return withSubsystemBase(encoderName, subsystemBase.getClass().getSimpleName());
+        }
+
         @SuppressWarnings("unchecked")
-        public <T extends EncoderEx> T withSubsystemBase(String subsystemBaseName) {
-            name = subsystemBaseName;
+        public <T extends EncoderEx> T withSubsystemBase(String encoderName, String subsystemBase) {
+            subsystemName = subsystemBase;
             rawWriter = ShuffleboardValue
-                    .create(0.0, name + "/Pos/Raw", name)
+                    .create(0.0, subsystemName + "/" + encoderName + "/Pos/Raw", subsystemName)
                     .withSize(1, 2)
                     .build();
             degreeWriter = ShuffleboardValue
-                    .create(0.0, name + "/Pos/Degree", name)
+                    .create(0.0, subsystemName + "/" + encoderName + "/Pos/Degree", subsystemName)
                     .withSize(1, 2)
                     .build();
             radianWriter = ShuffleboardValue
-                    .create(0.0, name + "/Pos/Radian", name)
+                    .create(0.0, subsystemName + "/" + encoderName + "/Pos/Radian", subsystemName)
                     .withSize(1, 2)
                     .build();
             return (T) EncoderEx.this;
@@ -63,7 +69,7 @@ public abstract class EncoderEx {
         setRange(range);
         return (CANcoderEx) this;
     }
-    
+
     public CANcoderEx withOffset(double offset) {
         setOffset(offset);
         return (CANcoderEx) this;
@@ -79,7 +85,7 @@ public abstract class EncoderEx {
     public double getDegree() {
         return getPosition() * 360;
     }
-    
+
     public double getRadian() {
         return getPosition() * (2*Math.PI);
     }
