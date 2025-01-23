@@ -1,6 +1,7 @@
 package net.droidrage.lib.encoder;
 
 import net.droidrage.lib.shuffleboard.ShuffleboardValue;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public abstract class EncoderEx {
     public enum EncoderRange {
@@ -21,6 +22,7 @@ public abstract class EncoderEx {
     public ShuffleboardValue<Double> rawWriter;
     public ShuffleboardValue<Boolean> isConnectedWriter;
     public String name;
+    public String subsystemName;
     protected String subSystemName;
     public int deviceID;
     
@@ -40,19 +42,24 @@ public abstract class EncoderEx {
     }
 
     public class SubsystemNameBuilder {
+
+        public <T extends EncoderEx> T withSubsystemBase(String encoderName, SubsystemBase subsystemBase) {
+            return withSubsystemBase(encoderName, subsystemBase.getClass().getSimpleName());
+        }
+
         @SuppressWarnings("unchecked")
-        public <T extends EncoderEx> T withSubsystemBase(String subsystemBaseName) {
-            name = subsystemBaseName;
+        public <T extends EncoderEx> T withSubsystemBase(String encoderName, String subsystemBase) {
+            subsystemName = subsystemBase;
             rawWriter = ShuffleboardValue
-                    .create(0.0, name + "/Pos/Raw", name)
+                    .create(0.0, subsystemName + "/" + encoderName + "/Pos/Raw", subsystemName)
                     .withSize(1, 2)
                     .build();
             degreeWriter = ShuffleboardValue
-                    .create(0.0, name + "/Pos/Degree", name)
+                    .create(0.0, subsystemName + "/" + encoderName + "/Pos/Degree", subsystemName)
                     .withSize(1, 2)
                     .build();
             radianWriter = ShuffleboardValue
-                    .create(0.0, name + "/Pos/Radian", name)
+                    .create(0.0, subsystemName + "/" + encoderName + "/Pos/Radian", subsystemName)
                     .withSize(1, 2)
                     .build();
             return (T) EncoderEx.this;
