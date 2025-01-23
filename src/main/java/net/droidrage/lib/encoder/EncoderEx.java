@@ -26,9 +26,9 @@ public abstract class EncoderEx {
     
 
     public class DirectionBuilder {
-        public SubsystemNameBuilder withDirection(EncoderDirection direction) {
+        public OffsetBuilder withDirection(EncoderDirection direction) {
             setDirection(direction);
-            return new SubsystemNameBuilder();
+            return new OffsetBuilder();
         }
     }
 
