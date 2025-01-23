@@ -6,7 +6,7 @@ import net.droidrage.lib.motor.SparkMaxEx;
 
 public class SparkAbsoluteEncoderEx extends EncoderEx {
     protected final SparkAbsoluteEncoder encoder;
-    EncoderConfig config;
+    protected final EncoderConfig config = new EncoderConfig();
     
     private SparkAbsoluteEncoderEx(SparkAbsoluteEncoder encoder) {
         this.encoder = encoder;
@@ -41,10 +41,8 @@ public class SparkAbsoluteEncoderEx extends EncoderEx {
     @Override
     public void setDirection(EncoderDirection direction) {
         switch (direction) {
-            case Reversed:
-                config.inverted(true);
-            case Forward:
-                config.inverted(false);
+            case Reversed -> config.inverted(true);
+            case Forward -> config.inverted(false);
         }
     }
 
