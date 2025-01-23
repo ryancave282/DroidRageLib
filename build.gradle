@@ -10,8 +10,8 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
-group = project.findProperty("group.id")
-version = project.findProperty("lib.version")
+version = library_version
+group = library_group_id
 
 publishing {
     publications {

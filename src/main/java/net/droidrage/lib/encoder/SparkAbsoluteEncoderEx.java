@@ -24,6 +24,16 @@ public class SparkAbsoluteEncoderEx extends EncoderEx {
     }
 
     @Override
+    public double getDegree() {
+        return getPosition()*(360);
+    }
+
+    @Override
+    public double getRadian() {
+        return getPosition()*(2*Math.PI);
+    }
+
+    @Override
     public double getVelocity() {
         return encoder.getVelocity();  
     }

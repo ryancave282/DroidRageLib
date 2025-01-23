@@ -13,14 +13,6 @@ public class CANcoderEx extends EncoderEx {
         this.encoder = encoder;
     }
 
-    public double getVelocity() {
-        return encoder.getVelocity().getValueAsDouble()*velocityConversionFactor;
-    }
-        
-    public double getPosition() {
-        return encoder.getPosition().getValueAsDouble()*positionConversionFactor;
-    }
-
     public static DirectionBuilder create(int deviceID) {
         CANcoderEx encoder = new CANcoderEx(new CANcoder(deviceID));
         encoder.deviceID = deviceID;
@@ -54,6 +46,14 @@ public class CANcoderEx extends EncoderEx {
         return encoder.getAbsolutePosition().getValueAsDouble();
     }
 
+    public double getVelocity() {
+        return encoder.getVelocity().getValueAsDouble() * velocityConversionFactor;
+    }
+
+    public double getPosition() {
+        return encoder.getPosition().getValueAsDouble() * positionConversionFactor;
+    }
+
     @Override
     public int getDeviceID() {
         return encoder.getDeviceID();
@@ -62,6 +62,16 @@ public class CANcoderEx extends EncoderEx {
     @Override
     public void setOffset(double offset) {
         config.MagnetSensor.MagnetOffset = offset;
+    }
+
+    @Override
+    public double getDegree() {
+        return getPosition()*(360);
+    }
+
+    @Override
+    public double getRadian() {
+        return getPosition()*(2*Math.PI);
     }
 }
 

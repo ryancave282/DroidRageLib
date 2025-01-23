@@ -32,6 +32,13 @@ public abstract class EncoderEx {
         }
     }
 
+    public class OffsetBuilder {
+        public SubsystemNameBuilder withOffset(double offset) {
+            setOffset(offset);
+            return new SubsystemNameBuilder();
+        }
+    }
+
     public class SubsystemNameBuilder {
         @SuppressWarnings("unchecked")
         public <T extends EncoderEx> T withSubsystemBase(String subsystemBaseName) {
@@ -63,11 +70,6 @@ public abstract class EncoderEx {
         setRange(range);
         return (CANcoderEx) this;
     }
-    
-    public CANcoderEx withOffset(double offset) {
-        setOffset(offset);
-        return (CANcoderEx) this;
-    }
 
     public void periodic() {
         rawWriter.set(getPosition());
@@ -76,13 +78,8 @@ public abstract class EncoderEx {
     }
     public abstract double getVelocity();
     public abstract double getPosition();
-    public double getDegree() {
-        return getPosition() * 360;
-    }
-    
-    public double getRadian() {
-        return getPosition() * (2*Math.PI);
-    }
+    public abstract double getDegree();
+    public abstract double getRadian();
     public abstract void setDirection(EncoderDirection direction);
     public abstract int getDeviceID();
     public abstract void setRange(EncoderRange range);
