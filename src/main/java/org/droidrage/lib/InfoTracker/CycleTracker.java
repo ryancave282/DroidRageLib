@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import edu.wpi.first.wpilibj.DriverStation;
-import frc.robot.subsystems.carriage.Carriage;
+// import frc.robot.subsystems.carriage.Carriage;
 
 public class CycleTracker {
     private final String filePath;
@@ -36,7 +36,7 @@ public class CycleTracker {
         }
     }
 
-    public void printAllData(Carriage carriage) {
-        printOut("Outtake Count: " + Double.toString(carriage.getOuttakeCount()));
-    }
+    // public void printAllData(Carriage carriage) {
+    //     printOut("Outtake Count: " + Double.toString(carriage.getOuttakeCount()));
+    // }
 }

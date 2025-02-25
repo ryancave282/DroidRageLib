@@ -7,6 +7,12 @@ import org.droidrage.lib.shuffleboard.ShuffleboardValue;
 
 //Works
 public class SetPower {
+    public enum Control{
+        PID,
+        FEEDFORWARD,
+        TRAPEZOID_PROFILE
+    }
+    
     private final CANMotorEx[] motors;
     private final ShuffleboardValue<Double> powerWriter;
     private final int mainNum;

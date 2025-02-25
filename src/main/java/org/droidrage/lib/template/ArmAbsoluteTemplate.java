@@ -4,10 +4,10 @@ import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.controller.ArmFeedforward;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
-import frc.robot.DroidRageConstants.Control;
 import org.droidrage.lib.encoder.EncoderEx;
 import org.droidrage.lib.motor.CANMotorEx;
 import org.droidrage.lib.motor.SparkMaxEx;
+import org.droidrage.lib.template.SetPower.Control;
 
 public class ArmAbsoluteTemplate extends ArmTemplate {
     protected EncoderEx encoder;

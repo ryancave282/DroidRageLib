@@ -13,7 +13,7 @@ import edu.wpi.first.units.measure.Voltage;
 import edu.wpi.first.wpilibj.Alert;
 import edu.wpi.first.wpilibj.Alert.AlertType;
 import edu.wpi.first.wpilibj.RobotController;
-import frc.robot.DroidRageConstants;
+import org.droidrage.lib.DroidRageConstants;
 
 public class TalonEx extends CANMotorEx {
     private final TalonFX talon;

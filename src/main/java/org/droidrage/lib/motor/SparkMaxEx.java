@@ -9,7 +9,7 @@ import com.revrobotics.spark.SparkBase.ResetMode;
 import edu.wpi.first.units.measure.Voltage;
 import edu.wpi.first.wpilibj.Alert;
 import edu.wpi.first.wpilibj.Alert.AlertType;
-import frc.robot.DroidRageConstants;
+import org.droidrage.lib.DroidRageConstants;
 import lombok.Getter;
 import lombok.Setter;
 
