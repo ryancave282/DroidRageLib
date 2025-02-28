@@ -4,12 +4,14 @@ import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.SparkMax;
+
+import org.droidrage.lib.Misc;
+
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
 import edu.wpi.first.units.measure.Voltage;
 import edu.wpi.first.wpilibj.Alert;
 import edu.wpi.first.wpilibj.Alert.AlertType;
-import org.droidrage.lib.DroidRageConstants;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -52,7 +54,7 @@ public class SparkMaxEx extends CANMotorEx{
         if(isEnabledWriter.get()){
             sparkMax.set(power);
         }
-        if(DroidRageConstants.removeWriterWriter.get()){
+        if(Misc.removeWriterWriter.get()){
             outputWriter.set(power);
         }
     }
@@ -62,7 +64,7 @@ public class SparkMaxEx extends CANMotorEx{
         if(isEnabledWriter.get()){
             sparkMax.setVoltage(outputVolts);
         }
-        if(DroidRageConstants.removeWriterWriter.get()){
+        if(Misc.removeWriterWriter.get()){
             outputWriter.set(outputVolts);
         }
     }

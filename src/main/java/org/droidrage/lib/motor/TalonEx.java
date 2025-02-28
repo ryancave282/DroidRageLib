@@ -8,12 +8,11 @@ import com.ctre.phoenix6.configs.TalonFXConfigurator;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
-
 import edu.wpi.first.units.measure.Voltage;
 import edu.wpi.first.wpilibj.Alert;
 import edu.wpi.first.wpilibj.Alert.AlertType;
 import edu.wpi.first.wpilibj.RobotController;
-import org.droidrage.lib.DroidRageConstants;
+import org.droidrage.lib.Misc;
 
 public class TalonEx extends CANMotorEx {
     private final TalonFX talon;
@@ -86,7 +85,7 @@ public class TalonEx extends CANMotorEx {
         if (isEnabledWriter.get()) {
             talon.set(power);
         }
-        if (DroidRageConstants.removeWriterWriter.get()) {
+        if (Misc.removeWriterWriter.get()) {
             outputWriter.set(power);
         }
     }
@@ -96,7 +95,7 @@ public class TalonEx extends CANMotorEx {
         if(isEnabledWriter.get()){
             talon.setVoltage(outputVolts);
         }
-        if(DroidRageConstants.removeWriterWriter.get()){//if(!DriverStation.isFMSAttached())
+        if(Misc.removeWriterWriter.get()){//if(!DriverStation.isFMSAttached())
             outputWriter.set(outputVolts);
         }
     }
